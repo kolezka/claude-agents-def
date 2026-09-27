@@ -1,0 +1,7 @@
+{
+  "name": "agents-def",
+  "version": "0.1.0",
+  "description": "Role subagents for orchestrated work: explorer, codebase-researcher, architect, implementer, debugger, test-engineer, reviewer, security-reviewer and verifier.",
+  "author": { "name": "Mariusz Rakus" },
+  "keywords": ["agents", "subagents", "orchestration", "review", "verification"]
+}

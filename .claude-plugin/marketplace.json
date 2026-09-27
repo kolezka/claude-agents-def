@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agents-def",
+  "description": "Role subagents for orchestrated engineering work",
+  "owner": { "name": "Mariusz Rakus" },
+  "plugins": [
+    {
+      "name": "agents-def",
+      "description": "Role subagents: explore, research, design, implement, debug, test, review and verify",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
