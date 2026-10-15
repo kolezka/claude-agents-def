@@ -25,7 +25,8 @@ plugin agents cannot carry `hooks` or `permissionMode` to enforce it.
 
 `skills/orchestrator` tells the main session to act as coordinator: split the
 work, hand it to subagents, and keep only decisions and verification in the
-main context. Invoke it as `agents-def:orchestrator`.
+main context. Run it with `/agents-def:orchestrator`, or let Claude load it
+when the task fits its description.
 
 ## Install
 
