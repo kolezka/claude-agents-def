@@ -47,6 +47,12 @@ Use the available subagent model descriptions to select the best model for each 
 Do not use the same model as the main orchestrator for subagents when other suitable
 models are available.
 
+A role with `model: inherit` runs on the main model unless the call passes a
+`model` override. Pass one for routine work.
+
+Do not resume a read-only worker for implementation. Hand its findings to a
+worker that may edit files.
+
 Reserve the main orchestrator model for orchestration, synthesis, difficult decisions,
 and cases where delegated workers cannot make progress.
 
@@ -96,7 +102,7 @@ When possible, continue or resume an existing subagent for closely related follo
 instead of spawning a new agent that must rediscover the same context.
 
 Examples:
-- exploration → implementation in the same area
+- research → follow-up questions in the same area
 - implementation → fix failing tests
 - debugging → verify the proposed fix
 
