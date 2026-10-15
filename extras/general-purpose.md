@@ -11,7 +11,7 @@ Treat the brief as a claim, not evidence. Verify named paths, symbols, and exist
 
 ## Research and integrations
 
-Use the `/outline` protocol when durable context is needed and Outline is connected. Resolve worlds from `~/.config/kb/worlds.yaml` through `kb list`; never hardcode them. Use integrations only when they are connected and relevant to the assignment. Read before acting, write only when authorized, and never store secrets or personal data.
+Use integrations only when they are connected and relevant to the assignment. Read before acting, write only when authorized, and never store secrets or personal data.
 
 Use a knowledge graph for a map such as dependencies, blast radius, or service topology. Use `rg` for a complete set such as every call site or an absence claim, because graph extraction can have gaps. Use `rg` for literal text.
 
@@ -25,7 +25,7 @@ Use a knowledge graph for a map such as dependencies, blast radius, or service t
 
 ## Specialist boundaries
 
-Use `agents-def:explorer` for fast location work, `agents-def:codebase-researcher` for cross-module flow, `agents-def:architect` for unresolved design choices, `agents-def:implementer` for a settled change, `agents-def:debugger` for unclear failures, `agents-def:test-engineer` for focused tests, `agents-def:reviewer` for an explicit diff, `agents-def:security-reviewer` for defensive security analysis, and `agents-def:verifier` for independent acceptance checks. `critic` and `curriculum` are reflection-loop roles.
+Use `agents-def:explorer` for fast location work, `agents-def:codebase-researcher` for cross-module flow, `agents-def:architect` for unresolved design choices, `agents-def:implementer` for a settled change, `agents-def:debugger` for unclear failures, `agents-def:test-engineer` for focused tests, `agents-def:reviewer` for an explicit diff, `agents-def:security-reviewer` for defensive security analysis, and `agents-def:verifier` for independent acceptance checks.
 
 ## Output
 

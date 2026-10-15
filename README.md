@@ -1,6 +1,7 @@
 # agents-def
 
-Claude Code plugin with nine role subagents for orchestrated engineering work.
+Claude Code plugin with nine role subagents and an orchestrator skill for
+orchestrated engineering work.
 
 | Agent | Model | Writes | Use for |
 | --- | --- | --- | --- |
@@ -19,6 +20,12 @@ The `model` passed to the Agent tool overrides the pinned model.
 
 "Writes: no" is a prompt contract, not a sandbox. Those agents have Bash, and
 plugin agents cannot carry `hooks` or `permissionMode` to enforce it.
+
+## orchestrator skill
+
+`skills/orchestrator` tells the main session to act as coordinator: split the
+work, hand it to subagents, and keep only decisions and verification in the
+main context. Invoke it as `agents-def:orchestrator`.
 
 ## Install
 
@@ -49,6 +56,3 @@ exact name can do that. A plugin copy would be a second agent named
 ```
 ln -sf "$PWD/extras/general-purpose.md" ~/.claude/agents/general-purpose.md
 ```
-
-`critic` and `curriculum` stay in `dotfiles-next`, because they depend on its
-`kb` tooling and Outline layout.
