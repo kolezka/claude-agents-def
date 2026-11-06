@@ -1,0 +1,3 @@
+- insert:
+    - id: claude-compat-agents-def
+      name: '@kolezka/agents-def-dsh'
