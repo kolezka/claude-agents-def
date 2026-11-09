@@ -1,7 +1,7 @@
 ---
 name: test-engineer
 description: Use this agent to design or implement focused tests for specified behavior. Typical triggers include adding regression coverage, defining observable acceptance cases, and testing important edge paths. Do not use it to repair production code outside the brief.
-model: sonnet
+model: claude-sonnet-5-5
 disallowedTools: Agent, Workflow
 ---
 

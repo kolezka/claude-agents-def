@@ -5,18 +5,21 @@ orchestrated engineering work.
 
 | Agent | Model | Writes | Use for |
 | --- | --- | --- | --- |
-| `explorer` | haiku | no | finding files, symbols, call sites, related tests |
-| `codebase-researcher` | sonnet | no | tracing a subsystem across modules |
+| `explorer` | claude-haiku-5-5 | no | finding files, symbols, call sites, related tests |
+| `codebase-researcher` | claude-sonnet-5-5 | no | tracing a subsystem across modules |
 | `architect` | inherit | no | unresolved boundaries, contracts, migrations |
 | `implementer` | inherit | yes | a settled, well-scoped change |
 | `debugger` | inherit | yes, when authorized | wrong behavior with an unclear cause |
-| `test-engineer` | sonnet | yes | focused and regression tests |
+| `test-engineer` | claude-sonnet-5-5 | yes | focused and regression tests |
 | `reviewer` | inherit | no | independent review of a named diff |
 | `security-reviewer` | inherit | no | defensive review of trust boundaries |
 | `verifier` | inherit | no | checking acceptance criteria after a change |
 
 Plugin agents are namespaced, so call them as `agents-def:explorer` and so on.
 The `model` passed to the Agent tool overrides the pinned model.
+
+Run `python3 tests/test-models.py` to check agent model selectors. The fixture
+is an approved synthetic subset, not a snapshot of all picker choices.
 
 "Writes: no" is a prompt contract, not a sandbox. Those agents have Bash, and
 plugin agents cannot carry `hooks` or `permissionMode` to enforce it.
