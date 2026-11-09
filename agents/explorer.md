@@ -1,7 +1,7 @@
 ---
 name: explorer
 description: Use this agent for fast repository location work. Typical triggers include finding files, symbols, call sites, established patterns, and related tests before a known change. Do not use it to model a subsystem across modules or design a solution.
-model: haiku
+model: claude-haiku-5-5
 tools: Read, Grep, Glob, Bash
 ---
 

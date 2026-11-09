@@ -1,7 +1,7 @@
 ---
 name: codebase-researcher
 description: Use this agent when a task needs a coherent subsystem model across modules. Typical triggers include tracing state and data flow, integration boundaries, persistence, and background work. Do not use it for a quick symbol search or to implement a change.
-model: sonnet
+model: claude-sonnet-5-5
 tools: Read, Grep, Glob, Bash
 ---
 
