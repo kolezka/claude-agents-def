@@ -50,6 +50,43 @@ Or standalone from this repo:
 After installing, remove the old user-level copies from `~/.claude/agents`,
 otherwise each role shows up twice (`explorer` and `agents-def:explorer`).
 
+## DeepSeek Harness (DSH)
+
+`dsh/` is a DSH adapter for the same plugin tree. It imports the published
+[`claude-plugin-dsh`](https://www.npmjs.com/package/claude-plugin-dsh) runtime,
+pinned to exactly `0.1.0` in `dsh/package.json` and `dsh/bun.lock`. The
+Claude Code install above does not use it.
+
+Install the adapter's dependency first, before you add the plugin to DSH.
+DSH does not install it for you:
+
+```
+cd dsh && bun install --frozen-lockfile
+```
+
+From the plugin root, `bun install --cwd dsh --frozen-lockfile` does the same.
+Then point DSH at `dsh/`, for example as a `file:` dependency. To check what
+the adapter registers, without changing anything:
+
+```
+bun x claude-plugin-dsh@0.1.0 inspect .
+```
+
+Each role, including `extras/general-purpose.md`, becomes a skill named
+`agents-def-agent-<role>`, next to the `orchestrator` skill. DSH does not
+enforce the agent definitions: model pins are dropped, and the tool allowlist
+is only an instruction in the brief, not a permission limit. The `Writes: no`
+contract above is a prompt in DSH too.
+
+To move to a newer runtime, change the exact version in `dsh/package.json`,
+run `bun install` in `dsh/`, and commit both files. Do not run the runtime's
+`sync` or `scaffold` commands on this adapter: version 0.1.0 writes a vendored
+`claude-compat.js` copy, and this adapter imports the package instead.
+
+Run `node --test tests/dsh-adapter.test.mjs` to check the adapter. It needs
+`bun` and network access to the npm registry, copies the plugin to a temp
+directory, installs from the lockfile there and loads the adapter.
+
 ## general-purpose
 
 `extras/general-purpose.md` is not part of the plugin. Its job is to replace the
