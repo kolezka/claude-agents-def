@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "agents-def",
+    "description": "Role subagents for orchestrated work (explorer, codebase-researcher, architect, implementer, debugger, test-engineer, reviewer, security-reviewer, verifier) and an orchestrator skill."
+  }
+}
