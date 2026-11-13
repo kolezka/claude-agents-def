@@ -9,8 +9,8 @@ import test from 'node:test'
 
 const root = resolve(import.meta.dirname, '..')
 const RUNTIME = 'claude-plugin-dsh'
-const RUNTIME_VERSION = '0.1.0'
-const RUNTIME_INTEGRITY = 'sha512-oQXwpYcLwzxOOSeltN1E4vztrx4tFLkOA9ws0uo4Sw1RlojmL38djKJIiebhJkU78K9omu3YV/csnlM3+PFhIw=='
+const RUNTIME_VERSION = '0.2.0'
+const RUNTIME_INTEGRITY = 'sha512-pzSobglwIh7NuG5Y5W331kVIg5NExU5wnzW3citMKXl57CMmVW255b5zPLDyVA/ERSgUjhrsugBgkEq5p+S1Zw=='
 const roles = [
   'architect', 'codebase-researcher', 'debugger', 'explorer', 'general-purpose',
   'implementer', 'reviewer', 'security-reviewer', 'test-engineer', 'verifier',
