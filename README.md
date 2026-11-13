@@ -54,7 +54,7 @@ otherwise each role shows up twice (`explorer` and `agents-def:explorer`).
 
 `dsh/` is a DSH adapter for the same plugin tree. It imports the published
 [`claude-plugin-dsh`](https://www.npmjs.com/package/claude-plugin-dsh) runtime,
-pinned to exactly `0.1.0` in `dsh/package.json` and `dsh/bun.lock`. The
+pinned to exactly `0.2.0` in `dsh/package.json` and `dsh/bun.lock`. The
 Claude Code install above does not use it.
 
 Install the adapter's dependency first, before you add the plugin to DSH.
@@ -69,7 +69,7 @@ Then point DSH at `dsh/`, for example as a `file:` dependency. To check what
 the adapter registers, without changing anything:
 
 ```
-bun x claude-plugin-dsh@0.1.0 inspect .
+bun x claude-plugin-dsh@0.2.0 inspect .
 ```
 
 Each role, including `extras/general-purpose.md`, becomes a skill named
@@ -80,7 +80,7 @@ contract above is a prompt in DSH too.
 
 To move to a newer runtime, change the exact version in `dsh/package.json`,
 run `bun install` in `dsh/`, and commit both files. Do not run the runtime's
-`sync` or `scaffold` commands on this adapter: version 0.1.0 writes a vendored
+`sync` or `scaffold` commands on this adapter: version 0.2.0 writes a vendored
 `claude-compat.js` copy, and this adapter imports the package instead.
 
 Run `node --test tests/dsh-adapter.test.mjs` to check the adapter. It needs
