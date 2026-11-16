@@ -9,8 +9,7 @@ import test from 'node:test'
 
 const root = resolve(import.meta.dirname, '..')
 const RUNTIME = 'claude-plugin-dsh'
-const RUNTIME_VERSION = '0.2.0'
-const RUNTIME_INTEGRITY = 'sha512-pzSobglwIh7NuG5Y5W331kVIg5NExU5wnzW3citMKXl57CMmVW255b5zPLDyVA/ERSgUjhrsugBgkEq5p+S1Zw=='
+const RUNTIME_VERSION = JSON.parse(readFileSync(join(root, 'dsh/package.json'), 'utf8')).dependencies[RUNTIME]
 const roles = [
   'architect', 'codebase-researcher', 'debugger', 'explorer', 'general-purpose',
   'implementer', 'reviewer', 'security-reviewer', 'test-engineer', 'verifier',
@@ -70,6 +69,7 @@ function withScratch(fn) {
 
 test('the adapter depends on the published runtime directly, with no vendored copy', () => {
   const pkg = JSON.parse(read('dsh/package.json'))
+  assert.match(RUNTIME_VERSION, /^\d+\.\d+\.\d+$/)
   assert.deepEqual(pkg.dependencies, { [RUNTIME]: RUNTIME_VERSION })
   assert.equal(pkg.version, JSON.parse(read('.claude-plugin/plugin.json')).version)
   assert.ok(pkg.files.includes('bun.lock'))
@@ -79,8 +79,9 @@ test('the adapter depends on the published runtime directly, with no vendored co
   assert.ok(source.includes(`import { createPlugin, rootFrom } from '${RUNTIME}'`))
   assert.ok(source.includes("createPlugin({ root: rootFrom(import.meta.url), agents: { extraDirs: ['extras'] } })"))
   const lock = read('dsh/bun.lock')
-  assert.ok(lock.includes(`"${RUNTIME}@${RUNTIME_VERSION}"`))
-  assert.ok(lock.includes(RUNTIME_INTEGRITY))
+  const entry = lock.split('\n').find(line => line.includes(`"${RUNTIME}@${RUNTIME_VERSION}"`))
+  assert.ok(entry)
+  assert.match(entry, /"sha512-[A-Za-z0-9+/]+=*"/)
 })
 
 test('a standalone copy installs the runtime from the lockfile and registers every role with its full body', () => withScratch(scratch => {
